@@ -1,0 +1,455 @@
+﻿<?xml version="1.0" encoding="utf-8"?><Database Name="testdb" Class="TAXDBDataContext" xmlns="http://schemas.microsoft.com/linqtosql/dbml/2007">
+  <Connection Mode="AppSettings" ConnectionString="Data Source=.\sqlexpress;Initial Catalog=testdb;Persist Security Info=True;Integrated Security=True" SettingsObjectName="TaxDemo.Properties.Settings" SettingsPropertyName="testdbConnectionString2" Provider="System.Data.SqlClient" />
+  <Table Name="dbo.AUTHORITY_LIST" Member="AUTHORITY_LISTs">
+    <Type Name="AUTHORITY_LIST">
+      <Column Name="AL_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AL_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AL_PARENTID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AL_ISSHOW" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AL_ORDERNUM" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GROUP_INFO" Member="GROUP_INFOs">
+    <Type Name="GROUP_INFO">
+      <Column Name="GI_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GI_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USER_GROUP" Member="USER_GROUPs">
+    <Type Name="USER_GROUP">
+      <Column Name="UG_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UG_UIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UG_GIIG" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.GROUP_AUTHORITY" Member="GROUP_AUTHORITies">
+    <Type Name="GROUP_AUTHORITY">
+      <Column Name="GA_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="GA_GIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GA_ALNAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_GAUTHORITY" Member="v_GAUTHORITies">
+    <Type Name="v_GAUTHORITY">
+      <Column Name="GA_GIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="GI_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="GA_ALNAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_UAUTHORITY" Member="v_UAUTHORITies">
+    <Type Name="v_UAUTHORITY">
+      <Column Name="UI_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AL_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_UGroup" Member="v_UGroups">
+    <Type Name="v_UGroup">
+      <Column Name="GI_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UI_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UI_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UI_TRUENAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UI_PASSWORD" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UI_ISVALID" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UI_TEL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UI_MAIL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UI_LASTLOGINTIME" Type="System.Data.Linq.Binary" DbType="rowversion" CanBeNull="true" IsVersion="true" />
+      <Column Name="UI_LASTLOGINIP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UI_GIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.COLUMNS_INFO" Member="COLUMNS_INFOs">
+    <Type Name="COLUMNS_INFO">
+      <Column Name="CI_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CI_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CI_COLNAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CI_MARK" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CI_ISVALID" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CI_TYPEID" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_COLUMNS" Member="v_COLUMNs">
+    <Type Name="v_COLUMN">
+      <Column Name="CI_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CI_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CI_COLNAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CI_MARK" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CI_ISVALID" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="CI_TYPEID" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="CT_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TEMPLATE_COLUMNS" Member="TEMPLATE_COLUMNs">
+    <Type Name="TEMPLATE_COLUMN">
+      <Column Name="TC_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TC_TIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TC_CIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TC_ORDER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_AGENTTEMPLATE" Member="v_AGENTTEMPLATEs">
+    <Type Name="v_AGENTTEMPLATE">
+      <Column Name="TI_AIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AI_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AI_AGENTID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AI_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_TAXID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_TAXCODEID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_TAXNAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_INDUSTRY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_ADDRESS" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_POSTCODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AI_TEL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AI_ISDEL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="TI_TYPE" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+      <Column Name="TI_ACID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TI_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TI_ISVALID" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.BATCH_INFO" Member="BATCH_INFOs">
+    <Type Name="BATCH_INFO">
+      <Column Name="BI_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="BI_IMPORTTIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="BI_TIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="BI_ISDEL" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="BI_UIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.COLUMNS_ALIAS" Member="COLUMNS_ALIAs">
+    <Type Name="COLUMNS_ALIA">
+      <Column Name="CA_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="CA_CIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CA_ALIAS" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_AgentInfo" Member="v_AgentInfos">
+    <Type Name="v_AgentInfo">
+      <Column Name="AI_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AI_AGENTID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AI_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_TAXID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_TAXCODEID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_TAXNAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_INDUSTRY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_ADDRESS" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_POSTCODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AI_TEL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AI_ISDEL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AI_TIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TI_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AGENT_INFO" Member="AGENT_INFOs">
+    <Type Name="AGENT_INFO">
+      <Column Name="AI_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AI_AGENTID" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AI_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_TAXID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_TAXCODEID" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_TAXNAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_INDUSTRY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_ADDRESS" Type="System.String" DbType="NVarChar(200) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_POSTCODE" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AI_TEL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AI_ISDEL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AI_TIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_AgentCountry" Member="v_AgentCountries">
+    <Type Name="v_AgentCountry">
+      <Column Name="AI_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_ISDEL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="AC_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AC_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AC_CURRENCY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AC_AIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AC_ISDEL" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AC_TIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TI_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AGENT_COUNTRY" Member="AGENT_COUNTRies">
+    <Type Name="AGENT_COUNTRY">
+      <Column Name="AC_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AC_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AC_CURRENCY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AC_AIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AC_ISDEL" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AC_TIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_TEMPLATECOLS" Member="v_TEMPLATECOLs">
+    <Type Name="v_TEMPLATECOL">
+      <Column Name="TC_TIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CI_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="CI_COLNAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TC_ORDER" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="CI_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TC_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TI_ISVALID" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="CI_TYPEID" Type="System.Int16" DbType="SmallInt NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.CURRENCY" Member="CURRENCies">
+    <Type Name="CURRENCY">
+      <Column Name="C_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="C_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="C_ADDTIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="C_UIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="C_ISDEL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_CURRENCY" Member="v_CURRENCies">
+    <Type Name="v_CURRENCY">
+      <Column Name="C_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="C_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="C_ADDTIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="C_UIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UI_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="C_ISDEL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.OPTIONS" Member="OPTIONs">
+    <Type Name="OPTION">
+      <Column Name="O_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="O_KEY" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="O_VALUE" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.REPORT2_DETAIL" Member="REPORT2_DETAILs">
+    <Type Name="REPORT2_DETAIL">
+      <Column Name="R2_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="R2_MONTH" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="R2_SALARY" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="R2_MINUS" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="R2_TAXSALARY" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="R2_TAXRATE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="R2_QUICK" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="R2_NEED" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="R2_RIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.REPORT1_DETAIL" Member="REPORT1_DETAILs">
+    <Type Name="REPORT1_DETAIL">
+      <Column Name="R1_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="R1_MONTH" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="R1_FORTAX" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="R1_REALDOLLOR" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="R1_REALRMB" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="R1_TAXALREADY" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="R1_TAXALREADYRMB" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="R1_SALARYRMB" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="R1_RIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TAX_RATE" Member="TAX_RATEs">
+    <Type Name="TAX_RATE">
+      <Column Name="TR_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TR_NAME" Type="System.String" DbType="NChar(10) NOT NULL" CanBeNull="false" />
+      <Column Name="TR_LOW" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TR_HIGH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TR_RATE" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TR_QUICH" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TR_MIN" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TR_MAX" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TAX_PLAYER" Member="TAX_PLAYERs">
+    <Type Name="TAX_PLAYER">
+      <Column Name="TP_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TP_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TP_ENNAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TP_IDNUMBER" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TP_AIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TP_ACID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_TAXPLAYER" Member="v_TAXPLAYERs">
+    <Type Name="v_TAXPLAYER">
+      <Column Name="TP_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TP_NAME" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TP_ENNAME" Type="System.String" DbType="NChar(10)" CanBeNull="true" />
+      <Column Name="TP_IDNUMBER" Type="System.String" DbType="NChar(20)" CanBeNull="true" />
+      <Column Name="TP_AIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TP_ACID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="AI_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AC_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TEMPLATE_INFO" Member="TEMPLATE_INFOs">
+    <Type Name="TEMPLATE_INFO">
+      <Column Name="TI_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TI_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TI_COLSINORDER" Type="System.String" DbType="NVarChar(MAX) NOT NULL" CanBeNull="false" />
+      <Column Name="TI_COLHEADERINORDER" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TI_ISVALID" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="TI_HEARDERROW" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TI_DATAROW" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TI_SALF" Type="System.String" DbType="NVarChar(500)" CanBeNull="true" />
+      <Column Name="TI_BONUSCOL" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TI_NAMECOL" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TI_MONTHCOL" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TI_REALCOL" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TI_ANNUCOL" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="TI_COLSCOUNT" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TI_VERFYF" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TI_SALFRAW" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+      <Column Name="TI_VERFYFRAW" Type="System.String" DbType="NVarChar(MAX)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.AGENT_YEAR" Member="AGENT_YEARs">
+    <Type Name="AGENT_YEAR">
+      <Column Name="AY_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="AY_NAME" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AY_ISCURRENT" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AY_ADDTIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AY_ENDTIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AY_UIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_TAXCREDIT" Member="v_TAXCREDITs">
+    <Type Name="v_TAXCREDIT">
+      <Column Name="TP_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AC_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="AI_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="TP_AIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TP_ACID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TC_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TP_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TC_YEAR" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TC_CREDITALL" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TC_CREDITUSED" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TC_CREDITBALANCE" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_AgentYear" Member="v_AgentYears">
+    <Type Name="v_AgentYear">
+      <Column Name="AY_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AY_NAME" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="AY_ISCURRENT" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="AY_ADDTIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="AY_ENDTIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="AY_UIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="UI_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+    </Type>
+  </Table>
+  <Table Name="dbo.USER_INFO" Member="USER_INFOs">
+    <Type Name="USER_INFO">
+      <Column Name="UI_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="UI_NAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UI_TRUENAME" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UI_PASSWORD" Type="System.String" DbType="NVarChar(50) NOT NULL" CanBeNull="false" />
+      <Column Name="UI_ISVALID" Type="System.Boolean" DbType="Bit NOT NULL" CanBeNull="false" />
+      <Column Name="UI_TEL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UI_MAIL" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UI_LASTLOGINTIME" Type="System.DateTime" DbType="DateTime" CanBeNull="true" />
+      <Column Name="UI_LASTLOGINIP" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="UI_GIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.TAX_CREDIT" Member="TAX_CREDITs">
+    <Type Name="TAX_CREDIT">
+      <Column Name="TC_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="TP_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TC_YEAR" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="TC_CREDITALL" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TC_CREDITUSED" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="TC_CREDITBALANCE" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="TC_RIID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.REPORT_INFO" Member="REPORT_INFOs">
+    <Type Name="REPORT_INFO">
+      <Column Name="RI_ID" Type="System.Int32" DbType="Int NOT NULL IDENTITY" IsPrimaryKey="true" IsDbGenerated="true" CanBeNull="false" />
+      <Column Name="RI_UIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RI_TPID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RI_ACID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RI_DECLARETIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RI_TABLETIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RI_AYNAME" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RI_BIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RI_ERATE1" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_ERATE2" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_MOUNTHCOUNT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RI_MONTH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RI_TAXARDTYPE" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="RI_BONUS" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_BONUSTAXRATEID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RI_BONUSTAX" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_YEARTITLE1" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_YEARTITLE2" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_CREATETIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RI_SUMS" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_SUMTAXSALARY" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_SUMTAXRMB" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_SUMTAXALREADY" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_SUMTAXALREADYRMB" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_USEALL" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_NEEDPACK" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_NEEDPACKREAL" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_WITHIN" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_NOTE1" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_NOTE2" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_ISDEL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="RI_YEARANNU" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_CURRENTNAME" Type="System.String" DbType="NVarChar(100)" CanBeNull="true" />
+      <Column Name="RI_BACKRATEID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RI_BACKSUMTAXSALARY" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_BACKSUMSALARY" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_BACKMINUS" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_BACKTAXRATE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RI_BACKTAXQUICK" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RI_USE2" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+  <Table Name="dbo.v_REPORT" Member="v_REPORTs">
+    <Type Name="v_REPORT">
+      <Column Name="RI_ID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RI_UIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RI_TPID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RI_ACID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RI_DECLARETIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RI_BIID" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RI_ERATE1" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_ERATE2" Type="System.Decimal" DbType="Decimal(18,5) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_MOUNTHCOUNT" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RI_TAXARDTYPE" Type="System.Int16" DbType="SmallInt" CanBeNull="true" />
+      <Column Name="RI_BONUS" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_BONUSTAXRATEID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RI_BONUSTAX" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_YEARTITLE1" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_YEARTITLE2" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_CREATETIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RI_SUMS" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_SUMTAXSALARY" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_SUMTAXALREADY" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_NEEDPACK" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_WITHIN" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_NOTE1" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_NOTE2" Type="System.String" DbType="NVarChar(100) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_ISDEL" Type="System.Boolean" DbType="Bit" CanBeNull="true" />
+      <Column Name="UI_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="TP_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AC_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="AI_NAME" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RI_AYNAME" Type="System.Int32" DbType="Int NOT NULL" CanBeNull="false" />
+      <Column Name="RI_TABLETIME" Type="System.DateTime" DbType="DateTime NOT NULL" CanBeNull="false" />
+      <Column Name="RI_SUMTAXRMB" Type="System.Decimal" DbType="Decimal(18,2) NOT NULL" CanBeNull="false" />
+      <Column Name="RI_NEEDPACKREAL" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_SUMTAXALREADYRMB" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_MONTH" Type="System.String" DbType="NVarChar(50)" CanBeNull="true" />
+      <Column Name="RI_YEARANNU" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="AI_ID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RI_BACKRATEID" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TR_RATE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="TR_QUICH" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RI_BACKSUMTAXSALARY" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_BACKSUMSALARY" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_BACKMINUS" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_BACKTAXRATE" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RI_BACKTAXQUICK" Type="System.Int32" DbType="Int" CanBeNull="true" />
+      <Column Name="RI_USEALL" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+      <Column Name="RI_USE2" Type="System.Decimal" DbType="Decimal(18,2)" CanBeNull="true" />
+    </Type>
+  </Table>
+</Database>

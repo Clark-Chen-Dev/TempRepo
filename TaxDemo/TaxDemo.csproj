@@ -1,0 +1,579 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="4.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProductVersion>8.0.30703</ProductVersion>
+    <SchemaVersion>2.0</SchemaVersion>
+    <ProjectGuid>{3383B0A7-48C3-43B0-A37A-AEDD3C925531}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>TaxDemo</RootNamespace>
+    <AssemblyName>TaxDemo</AssemblyName>
+    <TargetFrameworkVersion>v4.0</TargetFrameworkVersion>
+    <TargetFrameworkProfile>
+    </TargetFrameworkProfile>
+    <FileAlignment>512</FileAlignment>
+    <IsWebBootstrapper>false</IsWebBootstrapper>
+    <PublishUrl>D:\Tax_V1.7\</PublishUrl>
+    <Install>true</Install>
+    <InstallFrom>Unc</InstallFrom>
+    <UpdateEnabled>false</UpdateEnabled>
+    <UpdateMode>Foreground</UpdateMode>
+    <UpdateInterval>7</UpdateInterval>
+    <UpdateIntervalUnits>Days</UpdateIntervalUnits>
+    <UpdatePeriodically>false</UpdatePeriodically>
+    <UpdateRequired>false</UpdateRequired>
+    <MapFileExtensions>true</MapFileExtensions>
+    <InstallUrl>\\WIN-GE9E5FC996T\D\Tax_V1.7\</InstallUrl>
+    <PublisherName>LUCTECH</PublisherName>
+    <WebPage>publish.htm</WebPage>
+    <ApplicationRevision>73</ApplicationRevision>
+    <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
+    <UseApplicationTrust>false</UseApplicationTrust>
+    <CreateDesktopShortcut>true</CreateDesktopShortcut>
+    <ExcludeDeploymentUrl>true</ExcludeDeploymentUrl>
+    <PublishWizardCompleted>true</PublishWizardCompleted>
+    <BootstrapperEnabled>true</BootstrapperEnabled>
+    <BootstrapperComponentsLocation>Relative</BootstrapperComponentsLocation>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|x86' ">
+    <PlatformTarget>x86</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationIcon>ICON2.ico</ApplicationIcon>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestCertificateThumbprint>EF5511901D5C5A095AEE660C1EE2BCBD7F4F643B</ManifestCertificateThumbprint>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ManifestKeyFile>TaxDemo_TemporaryKey.pfx</ManifestKeyFile>
+  </PropertyGroup>
+  <PropertyGroup>
+    <GenerateManifests>false</GenerateManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <SignManifests>true</SignManifests>
+  </PropertyGroup>
+  <PropertyGroup>
+    <TargetZone>LocalIntranet</TargetZone>
+  </PropertyGroup>
+  <PropertyGroup>
+    <ApplicationManifest>Properties\app.manifest</ApplicationManifest>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="C1.C1Report.4, Version=4.6.20131.54624, Culture=neutral, PublicKeyToken=594a0605db190bb9, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1FlexGrid.4, Version=4.6.20131.765, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="C1.Win.C1FlexGrid.Classic.4, Version=4.6.20131.765, Culture=neutral, PublicKeyToken=79882d576c6336da, processorArchitecture=MSIL" />
+    <Reference Include="Interop.Microsoft.Office.Core">
+      <HintPath>obj\x86\Debug\Interop.Microsoft.Office.Core.dll</HintPath>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </Reference>
+    <Reference Include="Microsoft.Office.Interop.Excel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=71e9bce111e9429c, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+      <HintPath>C:\Program Files (x86)\Microsoft Office\Office15\DCF\Microsoft.Office.Interop.Excel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.VisualBasic" />
+    <Reference Include="NCalc">
+      <HintPath>res\NCalc.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="ReachFramework" />
+    <Reference Include="System" />
+    <Reference Include="System.configuration" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Entity" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Runtime.Serialization.Formatters.Soap" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Web.Extensions" />
+    <Reference Include="System.Web.Services" />
+    <Reference Include="System.Windows.Forms.DataVisualization" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Deployment" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="UIAutomationProvider" />
+    <Reference Include="UIAutomationTypes" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="CAgents.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="CAgents.Designer.cs">
+      <DependentUpon>CAgents.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ColumnsDAL.cs" />
+    <Compile Include="Consts.cs" />
+    <Compile Include="Cryptogram.cs" />
+    <Compile Include="ExcelHelper.cs" />
+    <Compile Include="FormulaC.cs" />
+    <Compile Include="frmAbout.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAbout.Designer.cs">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAgent.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgent.Designer.cs">
+      <DependentUpon>frmAgent.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAgentAssitant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgentAssitant.Designer.cs">
+      <DependentUpon>frmAgentAssitant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAgentCAssistant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgentCAssistant.Designer.cs">
+      <DependentUpon>frmAgentCAssistant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmAgentCountry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmAgentCountry.Designer.cs">
+      <DependentUpon>frmAgentCountry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCredit.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCredit.Designer.cs">
+      <DependentUpon>frmCredit.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmCreditList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmCreditList.Designer.cs">
+      <DependentUpon>frmCreditList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmDemo.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmDemo.Designer.cs">
+      <DependentUpon>frmDemo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportREM.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImportREM.Designer.cs">
+      <DependentUpon>frmImportREM.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmImportSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmImportSalary.Designer.cs">
+      <DependentUpon>frmImportSalary.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmInput.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmInput.Designer.cs">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmLogin.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmLogin.Designer.cs">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMain.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMain.Designer.cs">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmMe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmMe.Designer.cs">
+      <DependentUpon>frmMe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlayer.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlayer.Designer.cs">
+      <DependentUpon>frmPlayer.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmPlayerAssitant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmPlayerAssitant.Designer.cs">
+      <DependentUpon>frmPlayerAssitant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportList.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportList.Designer.cs">
+      <DependentUpon>frmReportList.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReportNew.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReportNew.Designer.cs">
+      <DependentUpon>frmReportNew.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmReview.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmReview.Designer.cs">
+      <DependentUpon>frmReview.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmRole.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmRole.Designer.cs">
+      <DependentUpon>frmRole.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTaxRate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTaxRate.Designer.cs">
+      <DependentUpon>frmTaxRate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTemplate.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTemplate.Designer.cs">
+      <DependentUpon>frmTemplate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTemplateAssitant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTemplateAssitant.Designer.cs">
+      <DependentUpon>frmTemplateAssitant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTemplateAgentCountry.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTemplateAgentCountry.Designer.cs">
+      <DependentUpon>frmTemplateAgentCountry.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTemplateSys.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTemplateSys.Designer.cs">
+      <DependentUpon>frmTemplateSys.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTemplateSysAssitant.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTemplateSysAssitant.Designer.cs">
+      <DependentUpon>frmTemplateSysAssitant.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTotalBack.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTotalBack.Designer.cs">
+      <DependentUpon>frmTotalBack.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTotalDetails.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTotalDetails.Designer.cs">
+      <DependentUpon>frmTotalDetails.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTotalFee.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTotalFee.Designer.cs">
+      <DependentUpon>frmTotalFee.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmTotle4.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmTotle4.Designer.cs">
+      <DependentUpon>frmTotle4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmUsers.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmUsers.Designer.cs">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </Compile>
+    <Compile Include="frmYear.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="frmYear.Designer.cs">
+      <DependentUpon>frmYear.cs</DependentUpon>
+    </Compile>
+    <Compile Include="InputDialog.cs" />
+    <Compile Include="Program.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="ReportWrapper.cs" />
+    <Compile Include="SysUtil.cs" />
+    <Compile Include="TAXDB.cs">
+      <DependentUpon>TAXDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="TAXDB.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>TAXDB.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="TemplateUtil.cs" />
+    <Compile Include="TmpData.cs" />
+    <Compile Include="ucReport1.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucReport1.Designer.cs">
+      <DependentUpon>ucReport1.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucReport2.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucReport2.Designer.cs">
+      <DependentUpon>ucReport2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="ucReport3.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="ucReport3.Designer.cs">
+      <DependentUpon>ucReport3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="WordUtil.cs" />
+    <EmbeddedResource Include="CAgents.resx">
+      <DependentUpon>CAgents.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAbout.resx">
+      <DependentUpon>frmAbout.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAgent.resx">
+      <DependentUpon>frmAgent.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAgentAssitant.resx">
+      <DependentUpon>frmAgentAssitant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAgentCAssistant.resx">
+      <DependentUpon>frmAgentCAssistant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmAgentCountry.resx">
+      <DependentUpon>frmAgentCountry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCredit.resx">
+      <DependentUpon>frmCredit.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmCreditList.resx">
+      <DependentUpon>frmCreditList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmDemo.resx">
+      <DependentUpon>frmDemo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportREM.resx">
+      <DependentUpon>frmImportREM.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmImportSalary.resx">
+      <DependentUpon>frmImportSalary.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmInput.resx">
+      <DependentUpon>frmInput.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmLogin.resx">
+      <DependentUpon>frmLogin.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMain.resx">
+      <DependentUpon>frmMain.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmMe.resx">
+      <DependentUpon>frmMe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlayer.resx">
+      <DependentUpon>frmPlayer.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmPlayerAssitant.resx">
+      <DependentUpon>frmPlayerAssitant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportList.resx">
+      <DependentUpon>frmReportList.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReportNew.resx">
+      <DependentUpon>frmReportNew.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmReview.resx">
+      <DependentUpon>frmReview.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmRole.resx">
+      <DependentUpon>frmRole.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTaxRate.resx">
+      <DependentUpon>frmTaxRate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTemplate.resx">
+      <DependentUpon>frmTemplate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTemplateAssitant.resx">
+      <DependentUpon>frmTemplateAssitant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTemplateAgentCountry.resx">
+      <DependentUpon>frmTemplateAgentCountry.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTemplateSys.resx">
+      <DependentUpon>frmTemplateSys.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTemplateSysAssitant.resx">
+      <DependentUpon>frmTemplateSysAssitant.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTotalBack.resx">
+      <DependentUpon>frmTotalBack.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTotalDetails.resx">
+      <DependentUpon>frmTotalDetails.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTotalFee.resx">
+      <DependentUpon>frmTotalFee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmTotle4.resx">
+      <DependentUpon>frmTotle4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmUsers.resx">
+      <DependentUpon>frmUsers.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="frmYear.resx">
+      <DependentUpon>frmYear.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Properties\licenses.licx" />
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucReport1.resx">
+      <DependentUpon>ucReport1.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucReport2.resx">
+      <DependentUpon>ucReport2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="ucReport3.resx">
+      <DependentUpon>ucReport3.cs</DependentUpon>
+    </EmbeddedResource>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <EmbeddedResource Include="Resources\ReportTemplate.xlsx" />
+    <None Include="Properties\app.manifest" />
+    <None Include="Resources\T1.xls" />
+    <None Include="Resources\T2.xls" />
+    <None Include="Resources\T3.xls" />
+    <None Include="Resources\Tax.xlsx" />
+    <None Include="Resources\TaxCredit.xlsx" />
+    <None Include="Resources\Template3.doc" />
+    <None Include="Resources\tpalyer.xlsx" />
+    <None Include="TAXDB.dbml.layout">
+      <DependentUpon>TAXDB.dbml</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <None Include="TAXDB.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <SubType>Designer</SubType>
+      <LastGenOutput>TAXDB.designer.cs</LastGenOutput>
+    </None>
+    <None Include="TaxDemo_TemporaryKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <WCFMetadata Include="Service References\" />
+  </ItemGroup>
+  <ItemGroup>
+    <COMReference Include="Microsoft.Office.Core">
+      <Guid>{2DF8D04C-5BFA-101B-BDE5-00AA0044DE52}</Guid>
+      <VersionMajor>2</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="Microsoft.Office.Interop.Word">
+      <Guid>{00020905-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>8</VersionMajor>
+      <VersionMinor>5</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+    <COMReference Include="VBIDE">
+      <Guid>{0002E157-0000-0000-C000-000000000046}</Guid>
+      <VersionMajor>5</VersionMajor>
+      <VersionMinor>3</VersionMinor>
+      <Lcid>0</Lcid>
+      <WrapperTool>primary</WrapperTool>
+      <Isolated>False</Isolated>
+      <EmbedInteropTypes>True</EmbedInteropTypes>
+    </COMReference>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="ICON2.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <BootstrapperPackage Include=".NETFramework,Version=v4.0">
+      <Visible>False</Visible>
+      <ProductName>Microsoft .NET Framework 4 %28x86 和 x64%29</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Client.3.5">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1 Client Profile</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Net.Framework.3.5.SP1">
+      <Visible>False</Visible>
+      <ProductName>.NET Framework 3.5 SP1</ProductName>
+      <Install>false</Install>
+    </BootstrapperPackage>
+    <BootstrapperPackage Include="Microsoft.Windows.Installer.3.1">
+      <Visible>False</Visible>
+      <ProductName>Windows Installer 3.1</ProductName>
+      <Install>true</Install>
+    </BootstrapperPackage>
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

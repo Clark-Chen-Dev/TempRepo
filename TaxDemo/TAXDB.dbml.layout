@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 12, 38.25" name="TAXDB">
+  <DataContextMoniker Name="/TAXDBDataContext" />
+  <nestedChildShapes>
+    <classShape Id="8946fc0f-550a-417c-b2df-e8eee8c936e4" absoluteBounds="3.5, 0.875, 2, 1.7625655110677081">
+      <DataClassMoniker Name="/TAXDBDataContext/AUTHORITY_LIST" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8382166d-cd0e-4cc7-ad4c-53448fdec0ad" absoluteBounds="3.515, 1.335, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e7a9b3d4-62d7-4310-90f4-53c11eb9a64f" absoluteBounds="7.875, 1, 2, 1.1895064290364583">
+      <DataClassMoniker Name="/TAXDBDataContext/GROUP_INFO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4f28b958-e8f5-447f-ac22-2fb0f62523a4" absoluteBounds="7.8900000000000006, 1.46, 1.9700000000000002, 0.62950642903645826" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="302fc4da-a7f4-49d1-854a-1cedf61796a0" absoluteBounds="3.5, 3, 2, 1.3805261230468751">
+      <DataClassMoniker Name="/TAXDBDataContext/USER_GROUP" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6e21a5ca-afd6-4af3-bccb-02d15fe4b1ad" absoluteBounds="3.515, 3.46, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c7009efa-8863-405c-b20e-f398f2e803c2" absoluteBounds="5.625, 0.875, 2, 1.3805261230468751">
+      <DataClassMoniker Name="/TAXDBDataContext/GROUP_AUTHORITY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ec550f3d-1620-43e5-bfc6-f515723e79b2" absoluteBounds="5.64, 1.335, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a36ec125-adb3-4365-88f1-a9660a8a0137" absoluteBounds="3.5, 4.5, 2, 1.3805261230468751">
+      <DataClassMoniker Name="/TAXDBDataContext/v_GAUTHORITY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="583df90d-4833-49d6-9364-bf8ffa8edf83" absoluteBounds="3.515, 4.96, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="526f6980-9a73-4e92-bb27-9c8b953a62a5" absoluteBounds="6.125, 6.375, 2, 1.1895064290364583">
+      <DataClassMoniker Name="/TAXDBDataContext/v_UAUTHORITY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="572f7670-d53d-4334-9a81-c900beafed98" absoluteBounds="6.14, 6.835, 1.9700000000000002, 0.62950642903645826" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e03e867c-f944-402e-9e6c-b4c4c9682740" absoluteBounds="9, 3.75, 2, 2.9086836751302081">
+      <DataClassMoniker Name="/TAXDBDataContext/v_UGroup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6c766b4b-1de0-4618-863a-26b124c7788f" absoluteBounds="9.015, 4.21, 1.9700000000000002, 2.348683675130208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="029b283e-0892-4846-8c23-7f402ba8b4ee" absoluteBounds="3.75, 6.625, 2, 1.9535852050781251">
+      <DataClassMoniker Name="/TAXDBDataContext/COLUMNS_INFO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="27c090d9-6cf7-4515-9ce2-fab732f93f5e" absoluteBounds="3.765, 7.085, 1.9700000000000002, 1.393585205078125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e3f6085a-855a-4a8a-9bd1-685eca8eaeb3" absoluteBounds="6.5, 8.125, 2, 2.1446048990885416">
+      <DataClassMoniker Name="/TAXDBDataContext/v_COLUMN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6a4f1057-bdde-43f9-8ec4-3dda76b3e6c4" absoluteBounds="6.515, 8.585, 1.9700000000000002, 1.5846048990885415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4b707ef6-13d0-479e-b383-168c22ae91b4" absoluteBounds="9.125, 11, 2, 1.5715458170572916">
+      <DataClassMoniker Name="/TAXDBDataContext/TEMPLATE_COLUMN" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0e935087-b523-48dc-b176-9357f86e83db" absoluteBounds="9.14, 11.46, 1.9700000000000002, 1.0115458170572915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="239f7cd7-2a5a-45f7-833c-52551d63b266" absoluteBounds="6.25, 10.75, 2, 3.8637821451822916">
+      <DataClassMoniker Name="/TAXDBDataContext/v_AGENTTEMPLATE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b05f0019-bfb4-4f7b-9174-8af9e93237df" absoluteBounds="6.265, 11.21, 1.9700000000000002, 3.3037821451822915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="465535ef-eb87-4d46-a7ff-514bbccda723" absoluteBounds="8.125, 15.625, 2, 1.7625655110677081">
+      <DataClassMoniker Name="/TAXDBDataContext/BATCH_INFO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c56ddade-83fc-4f9a-b5c3-fd268a9d049c" absoluteBounds="8.14, 16.085, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9ef0cd50-dab5-4044-9a7b-6d88988ce85a" absoluteBounds="2.375, 16.625, 2, 1.3805261230468751">
+      <DataClassMoniker Name="/TAXDBDataContext/COLUMNS_ALIA" />
+      <nestedChildShapes>
+        <elementListCompartment Id="843bf948-c66f-4dd8-ba70-584dd8fbe302" absoluteBounds="2.39, 17.085, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="96f94d35-c48d-48eb-961e-a90a4ceb983f" absoluteBounds="4.25, 12.25, 2, 3.2907230631510416">
+      <DataClassMoniker Name="/TAXDBDataContext/v_AgentInfo" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a1c8bf38-f779-4c63-a543-bc954a21b9b4" absoluteBounds="4.265, 12.71, 1.9700000000000002, 2.7307230631510415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="49d844c7-55a9-4363-9706-beea9613621c" absoluteBounds="1.125, 3.25, 2, 3.0997033691406251">
+      <DataClassMoniker Name="/TAXDBDataContext/AGENT_INFO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="46df11fc-0de5-4d0a-9177-eb9b55930c2e" absoluteBounds="1.1400000000000001, 3.71, 1.9700000000000002, 2.539703369140625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2d2c4126-aaca-437a-9d92-fb9f7faa4373" absoluteBounds="1.875, 14.125, 2, 2.5266442871093751">
+      <DataClassMoniker Name="/TAXDBDataContext/v_AgentCountry" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f014538a-60bc-42fd-98fd-4971bbaaea8e" absoluteBounds="1.8900000000000001, 14.585, 1.9700000000000002, 1.966644287109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="200b4ed5-5e90-4480-8222-93d93fdcca5d" absoluteBounds="1.75, 12.125, 2, 1.9535852050781251">
+      <DataClassMoniker Name="/TAXDBDataContext/AGENT_COUNTRY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d4cb9ba0-96a7-4d15-a40c-0e365b410b93" absoluteBounds="1.7650000000000001, 12.585, 1.9700000000000002, 1.393585205078125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c89fd680-3328-4c71-a3fc-68c1c8ff73d3" absoluteBounds="0.5, 11, 2, 2.3356245930989585">
+      <DataClassMoniker Name="/TAXDBDataContext/v_TEMPLATECOL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="01345d4a-b875-4dc5-9cc1-a19411897987" absoluteBounds="0.51500000000000012, 11.46, 1.9700000000000002, 1.7756245930989585" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="555c1327-bf6b-47f0-95a8-12487a1a8bdc" absoluteBounds="5.125, 16.5, 2, 1.7625655110677081">
+      <DataClassMoniker Name="/TAXDBDataContext/CURRENCY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="92bf54c5-0960-4bb9-b495-edb363577b5b" absoluteBounds="5.14, 16.96, 1.9700000000000002, 1.2025655110677083" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b999fbcd-ae33-421b-9752-193fbf4f54e4" absoluteBounds="8.125, 17.875, 2, 1.9535852050781251">
+      <DataClassMoniker Name="/TAXDBDataContext/v_CURRENCY" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e4514684-efcb-4951-89f1-23e69d63dcae" absoluteBounds="8.14, 18.335, 1.9700000000000002, 1.393585205078125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d2ab381a-8c89-4888-9167-bb01d6690b53" absoluteBounds="2.5, 20.875, 2, 1.3805261230468751">
+      <DataClassMoniker Name="/TAXDBDataContext/OPTION" />
+      <nestedChildShapes>
+        <elementListCompartment Id="11547c9f-63cf-41df-95f3-0f5e24e1f442" absoluteBounds="2.515, 21.335, 1.9700000000000002, 0.820526123046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="be942f38-b273-4429-9df8-26a76682110d" absoluteBounds="8.125, 21.75, 2, 2.5266442871093751">
+      <DataClassMoniker Name="/TAXDBDataContext/REPORT2_DETAIL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0d8d3c2c-de27-4b89-8661-fab7b6256399" absoluteBounds="8.14, 22.21, 1.9700000000000002, 1.966644287109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f8000e4e-5311-4058-af8a-1a0b74d0e378" absoluteBounds="1.375, 22.875, 2, 2.5266442871093751">
+      <DataClassMoniker Name="/TAXDBDataContext/REPORT1_DETAIL" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b21aa142-c03d-4d95-a870-f086370646f5" absoluteBounds="1.3899999999999997, 23.335, 1.9700000000000002, 1.966644287109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6ec34379-c0ec-47c9-8281-894caf4416ca" absoluteBounds="2.375, 18.5, 2, 2.3356245930989585">
+      <DataClassMoniker Name="/TAXDBDataContext/TAX_RATE" />
+      <nestedChildShapes>
+        <elementListCompartment Id="896609c4-9172-46b4-8113-9dc48723d9d9" absoluteBounds="2.39, 18.96, 1.9700000000000002, 1.7756245930989585" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b0b9fc9c-4c7e-42a3-b589-c71ae7565c16" absoluteBounds="1.125, 0.875, 2, 1.9535852050781251">
+      <DataClassMoniker Name="/TAXDBDataContext/TAX_PLAYER" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fb0328f7-7ed9-4d77-9189-f90c028d82cc" absoluteBounds="1.1400000000000001, 1.335, 1.9700000000000002, 1.393585205078125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="439a18b6-dfdb-477f-a62e-0676d51530dc" absoluteBounds="3.625, 9.75, 2, 2.3356245930989585">
+      <DataClassMoniker Name="/TAXDBDataContext/v_TAXPLAYER" />
+      <nestedChildShapes>
+        <elementListCompartment Id="315e1928-52ea-4dd1-b441-b5731c8ddde1" absoluteBounds="3.64, 10.21, 1.9700000000000002, 1.7756245930989585" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="073a086a-1260-4b59-b162-94958f4eb116" absoluteBounds="9.125, 7, 2, 4.0548018391927076">
+      <DataClassMoniker Name="/TAXDBDataContext/TEMPLATE_INFO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="31ee290e-3167-44aa-b9eb-7c04dd0fa6f0" absoluteBounds="9.14, 7.4600000000000009, 1.9700000000000002, 3.494801839192708" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="983f624b-f56f-48ed-9dfb-4cf560c0ac5c" absoluteBounds="1.125, 6.75, 2, 1.9535852050781251">
+      <DataClassMoniker Name="/TAXDBDataContext/AGENT_YEAR" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a7f69a7a-8a86-4b02-99c7-cbf1ba5df9a3" absoluteBounds="1.1400000000000001, 7.21, 1.9700000000000002, 1.393585205078125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="32096ef4-03b1-46b0-8e4b-93655765d121" absoluteBounds="9.75, 26, 2, 2.9086836751302081">
+      <DataClassMoniker Name="/TAXDBDataContext/v_TAXCREDIT" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8861d5f8-5555-414c-9e00-170c6841a353" absoluteBounds="9.765, 26.46, 1.9700000000000002, 2.348683675130208" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="64c53190-e2bb-45f6-a16d-80e82033375f" absoluteBounds="1.25, 8.875, 2, 2.1446048990885416">
+      <DataClassMoniker Name="/TAXDBDataContext/v_AgentYear" />
+      <nestedChildShapes>
+        <elementListCompartment Id="672165ad-314f-4249-b351-5d5e935a7446" absoluteBounds="1.2650000000000001, 9.335, 1.9700000000000002, 1.5846048990885415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2f723ed4-4f75-44f0-8ebe-6a26e7753acb" absoluteBounds="6.75, 2.875, 2, 2.7176639811197916">
+      <DataClassMoniker Name="/TAXDBDataContext/USER_INFO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="558f94b3-43ff-4ea2-b74a-c699db58fa49" absoluteBounds="6.765, 3.335, 1.9700000000000002, 2.1576639811197915" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a184b5f2-2381-4f24-84c9-fe8d493143c0" absoluteBounds="6.25, 24.875, 2, 2.1446048990885416">
+      <DataClassMoniker Name="/TAXDBDataContext/TAX_CREDIT" />
+      <nestedChildShapes>
+        <elementListCompartment Id="50575a99-adea-415a-b22d-845a817c77f4" absoluteBounds="6.265, 25.335, 1.9700000000000002, 1.5846048990885415" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="34a3a60e-f3e7-4f1c-bb13-57d9c293615b" absoluteBounds="4, 27.125, 2, 8.4482548014322916">
+      <DataClassMoniker Name="/TAXDBDataContext/REPORT_INFO" />
+      <nestedChildShapes>
+        <elementListCompartment Id="574ea812-7cbd-4422-a6b8-b5df36d8324b" absoluteBounds="4.015, 27.585, 1.9700000000000002, 7.888254801432292" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0e149195-ef94-4e41-a8fd-2607266f0303" absoluteBounds="6.75, 28.375, 2, 9.59437296549479">
+      <DataClassMoniker Name="/TAXDBDataContext/v_REPORT" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bba327a3-6563-4ab7-970f-61c8667f61e5" absoluteBounds="6.765, 28.835, 1.9700000000000002, 9.0343729654947911" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
