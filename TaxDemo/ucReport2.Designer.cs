@@ -47,7 +47,7 @@
             this.groupBox1.Controls.Add(this.c1FlexGrid2);
             this.groupBox1.Location = new System.Drawing.Point(26, 4);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(1046, 494);
+            this.groupBox1.Size = new System.Drawing.Size(1146, 494);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
             // 
@@ -91,7 +91,7 @@
             // 
             // c1FlexGrid2
             // 
-            this.c1FlexGrid2.ColumnInfo = "10,0,0,0,0,100,Columns:0{AllowSorting:False;Name:\"Month\";AllowDragging:False;Allo" +
+            this.c1FlexGrid2.ColumnInfo = "11,0,0,0,0,100,Columns:0{AllowSorting:False;Name:\"Month\";AllowDragging:False;Allo" +
     "wResizing:False;AllowEditing:False;Style:\"DataType:System.String;TextAlign:LeftC" +
     "enter;\";}\t";
             this.c1FlexGrid2.Location = new System.Drawing.Point(26, 75);
@@ -99,7 +99,7 @@
             this.c1FlexGrid2.Rows.Count = 2;
             this.c1FlexGrid2.Rows.DefaultSize = 20;
             this.c1FlexGrid2.Rows.Fixed = 2;
-            this.c1FlexGrid2.Size = new System.Drawing.Size(1014, 364);
+            this.c1FlexGrid2.Size = new System.Drawing.Size(1114, 364);
             this.c1FlexGrid2.TabIndex = 7;
             // 
             // ucReport2
@@ -108,7 +108,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.Controls.Add(this.groupBox1);
             this.Name = "ucReport2";
-            this.Size = new System.Drawing.Size(1095, 505);
+            this.Size = new System.Drawing.Size(1195, 505);
             this.Load += new System.EventHandler(this.ucReport2_Load);
             this.groupBox1.ResumeLayout(false);
             this.groupBox1.PerformLayout();

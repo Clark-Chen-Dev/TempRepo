@@ -9,6 +9,7 @@ using System.Windows.Forms;
 using System.Linq.Expressions;
 using System.Data.Linq;
 using System.Data.SqlClient;
+using System.Configuration;
 
 namespace TaxDemo
 {
@@ -262,7 +263,8 @@ namespace TaxDemo
             //    return;
             //}
             
-            SqlDataAdapter adapter = new SqlDataAdapter(sqlBldr.ToString(), db.Connection.ConnectionString);
+            string connStr = ConfigurationManager.ConnectionStrings["TaxDemo.Properties.Settings.testdbConnectionString"].ConnectionString;
+            SqlDataAdapter adapter = new SqlDataAdapter(sqlBldr.ToString(), connStr);
             DataTable query = new DataTable();
             adapter.Fill(query);
 

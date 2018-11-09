@@ -26,7 +26,7 @@ namespace TaxDemo
 
         private void ucReport2_Load(object sender, EventArgs e)
         {
-            
+
         }
 
         /// <summary>
@@ -51,14 +51,14 @@ namespace TaxDemo
                 }
 
                 //年终奖按12个月除，若存在月应纳税所得额为负，应先扣除后再计算税率
-                
+
                 c1FlexGrid2.Rows.Add();
                 int index = c1FlexGrid2.Rows.Count - 1;
                 c1FlexGrid2[index, 0] = "年终奖";
                 TAX_RATE trbonus = SysUtil.GetTaxRate((int)RW2.Base.RI_BONUSTAXRATEID);
                 c1FlexGrid2[index, 1] = RW2.Base.RI_BONUS;
-                c1FlexGrid2[index, 3] = RW2.Base.RI_BONUS ;
-                c1FlexGrid2[index, 4] = string.Format("{0}%",trbonus.TR_RATE );
+                c1FlexGrid2[index, 3] = RW2.Base.RI_BONUS;
+                c1FlexGrid2[index, 4] = string.Format("{0}%", trbonus.TR_RATE);
                 c1FlexGrid2[index, 5] = trbonus.TR_QUICH;
                 c1FlexGrid2[index, 6] = RW2.Base.RI_BONUSTAX;
 
@@ -66,15 +66,50 @@ namespace TaxDemo
                 c1FlexGrid2.Rows.Add();
                 index = c1FlexGrid2.Rows.Count - 1;
                 c1FlexGrid2[index, 0] = "总计";
-                
+
                 c1FlexGrid2[index, 1] = RW2.Base.RI_SUMS.ToString("F2");
                 c1FlexGrid2[index, 3] = RW2.Base.RI_SUMTAXSALARY.ToString("F2");
 
-                c1FlexGrid2[index, 6] = RW2.Base.RI_SUMTAXRMB;
-                c1FlexGrid2[index, 7] =  RW2.Base.RI_SUMTAXALREADYRMB;
-                c1FlexGrid2[index, 8] = RW2.Base.RI_USEALL ;
-                c1FlexGrid2[index, 9] = RW2.Base.RI_NEEDPACK;//
-                
+                c1FlexGrid2[index, 6] = RW2.Base.RI_SUMTAXRMB; // 应缴税额(总计) Added by CYQ 2018-07-13
+                c1FlexGrid2[index, 7] = RW2.Base.RI_SUMTAXALREADYRMB; // 境外已纳税额(总计) Added by CYQ 2018-07-13
+
+                // Modified by CYQ on 2018-09-10
+                // 根据财通嘉鑫要求，将“本年已缴/以前留抵”拆分为“境内已纳税额”和“以前留抵税额”
+                // Begin
+                //c1FlexGrid2[index, 8] = RW2.Base.RI_USEALL; // 本年已缴/以前留抵(总计) Added by CYQ 2018-07-13
+                // End
+
+                // Modify by CYQ 2018-07-13
+                // 修复境内应补税额显示错误。
+                // Begin
+                //c1FlexGrid2[index, 9] = RW2.Base.RI_NEEDPACK; // 境内应补税额(总计) Added by CYQ 2018-07-13
+
+                // Modified by CYQ on 2018-09-10
+                // 根据财通嘉鑫要求，将“本年已缴/以前留抵”拆分为“境内已纳税额”和“以前留抵税额”
+                // Begin
+                //c1FlexGrid2[index, 9] = RW2.Base.RI_SUMTAXRMB - RW2.Base.RI_SUMTAXALREADYRMB - RW2.Base.RI_USEALL; // 境内应补税额(总计)
+                c1FlexGrid2[index, 8] = RW2.Base.RI_USE2 != null ? RW2.Base.RI_USE2.Value : 0; // 境内已纳税额
+
+                // 以前留抵税额 = 使用可抵税总额 - 境内已纳税额
+                if (RW2.Base.RI_USEALL == null)
+                {
+                    c1FlexGrid2[index, 9] = 0;
+                }
+                else
+                {
+                    if (RW2.Base.RI_USE2 == null)
+                    {
+                        c1FlexGrid2[index, 9] = RW2.Base.RI_USEALL.Value;
+                    }
+                    else
+                    {
+                        c1FlexGrid2[index, 9] = RW2.Base.RI_USEALL.Value - RW2.Base.RI_USE2.Value;
+                    }
+                }
+
+                c1FlexGrid2[index, 10] = RW2.Base.RI_SUMTAXRMB - RW2.Base.RI_SUMTAXALREADYRMB - RW2.Base.RI_USEALL; // 境内应补税额(总计)
+                // End
+                // End
             }
             RefreshStyle2();
         }
@@ -98,7 +133,7 @@ namespace TaxDemo
         /// </summary>
         private void InitialC1DGV2()
         {
-            lblYearTitle.Text= lblTitle2.Text = lblNote1.Text = lblNote2.Text = string.Empty;
+            lblYearTitle.Text = lblTitle2.Text = lblNote1.Text = lblNote2.Text = string.Empty;
 
             c1FlexGrid2.AllowMerging = AllowMergingEnum.Custom;
             c1FlexGrid2.AllowDragging = AllowDraggingEnum.Both;
@@ -143,11 +178,25 @@ namespace TaxDemo
             c1FlexGrid2[0, 7] = "境外已纳税额";
             c1FlexGrid2[1, 7] = "人民币(元)";
 
-            c1FlexGrid2[0, 8] = "以前留抵税额";
+
+            // Modified by CYQ on 20180910
+            // 根据财通嘉鑫的要求，将“本年已缴/以前留抵”拆分为“境内已纳税额”和“以前留抵税额”
+            // Begin
+            //c1FlexGrid2[0, 8] = "本年已缴/以前留抵";
+            //c1FlexGrid2[1, 8] = "人民币(元)";
+
+            //c1FlexGrid2[0, 9] = "境内应补税额";
+            //c1FlexGrid2[1, 9] = "人民币(元)";
+
+            c1FlexGrid2[0, 8] = "境内已纳税额";
             c1FlexGrid2[1, 8] = "人民币(元)";
 
-            c1FlexGrid2[0, 9] = "境内应补税额";
+            c1FlexGrid2[0, 9] = "以前留抵税额";
             c1FlexGrid2[1, 9] = "人民币(元)";
+
+            c1FlexGrid2[0, 10] = "境内应补税额";
+            c1FlexGrid2[1, 10] = "人民币(元)";
+            // End
         }
 
         /// <summary>
@@ -155,10 +204,23 @@ namespace TaxDemo
         /// </summary>
         /// <param name="canUse"></param>
         /// <param name="real"></param>
-        public void AddCanUse(decimal canUse,decimal real)
+        public void AddCanUse(decimal canUse, decimal real)
         {
-            c1FlexGrid2[c1FlexGrid2.Rows.Count-1, 8] = canUse;
-            c1FlexGrid2[c1FlexGrid2.Rows.Count - 1, 9] = real;
+            c1FlexGrid2[c1FlexGrid2.Rows.Count - 1, 8] = canUse;
+            c1FlexGrid2[c1FlexGrid2.Rows.Count - 1, 10] = real;
+        }
+
+        /// <summary>
+        /// 增加可用抵扣,刷新数据
+        /// </summary>
+        /// <param name="internalTax">境内已纳税额</param>
+        /// <param name="credit">以前留抵税额</param>
+        /// <param name="real">境内应补税额</param>
+        public void AddCanUse(decimal internalTax, decimal credit, decimal real)
+        {
+            c1FlexGrid2[c1FlexGrid2.Rows.Count - 1, 8] = internalTax;
+            c1FlexGrid2[c1FlexGrid2.Rows.Count - 1, 9] = credit;
+            c1FlexGrid2[c1FlexGrid2.Rows.Count - 1, 10] = real;
         }
     }
 }

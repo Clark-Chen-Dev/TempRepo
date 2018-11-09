@@ -13,11 +13,11 @@ namespace TaxDemo
     {
         private TAXDBDataContext db = new TAXDBDataContext();
         private string funName = "数据处理";
-        private int ACID;
-        private int TIID;
-        private int AYNAME;
-        private decimal rate1;
-        private decimal rate2;
+        private int ACID; // 国别ID Added by CYQ 2018-07-12
+        private int TIID; // 国别模板ID Added by CYQ 2018-07-12
+        private int AYNAME; // 获取当前年度 Added by CYQ 2018-07-12
+        private decimal rate1; // 个税所在国货币与美元的汇率（1外国货币兑换多少美元） Added by CYQ 2018-07-12
+        private decimal rate2; // 美元和人民币汇率（1美元兑换多少人民币） Added by CYQ 2018-07-12
 
         private List<string> Names;
         private Dictionary<string, decimal> TaxAlready;
@@ -32,35 +32,26 @@ namespace TaxDemo
 
             cbxAgentCs.DisplayMember = "AC_NAME";
             cbxAgentCs.ValueMember = "AC_ID";
-
-
         }
 
         private void frmImportSalary_Load(object sender, EventArgs e)
         {
-            loadAgents();
-
-            //设置当前年度
+            loadAgents(); // 加载公司信息 Added by CYQ 2018-07-12
             AGENT_YEAR ay = db.AGENT_YEARs.SingleOrDefault(a => a.AY_ISCURRENT == true);
-            txtYear.Text = db.AGENT_YEARs.SingleOrDefault(a => a.AY_ISCURRENT == true).AY_NAME.ToString();
-            this.AYNAME = ay.AY_NAME;
-            cbxOthers.SelectedIndex = 0;
-
-            //加载上次使用的参数数据
-            LoadXML();
+            txtYear.Text = ay.AY_NAME.ToString(); // 申报年度设置为当前年度 Added by CYQ 2018-07-12
+            this.AYNAME = ay.AY_NAME; // 获取当前年度 Added by CYQ 2018-07-12
+            cbxOthers.SelectedIndex = 0; // 设置其它数据导入为已纳税额(总额) Added by CYQ 2018-07-12
+            LoadXML(); //加载上次使用的参数数据
         }
 
         /// <summary>
-        /// 公司加载
+        /// 加载公司信息
         /// </summary>
         private void loadAgents()
         {
             cbxAgents.Items.Clear();
-
-            var data = db.AGENT_INFOs.Where(a => a.AI_ISDEL == false).Select(p => p);
-            cbxAgents.DataSource = data;
+            cbxAgents.DataSource = db.AGENT_INFOs.Where(a => a.AI_ISDEL == false).Select(p => p);
         }
-
 
         /// <summary>
         /// 打开文件
@@ -97,7 +88,6 @@ namespace TaxDemo
                 txtDirOther.Text = choofdlog.FileName;
             }
         }
-
 
         private void btnImport_Click(object sender, EventArgs e)
         {
@@ -141,7 +131,6 @@ namespace TaxDemo
 
             //获取年金限额
             decimal YearAnnuLimit = Convert.ToDecimal(txtYearAnnu.Text.Trim());
-
 
             ExcelHelper excel = new ExcelHelper();
             try
@@ -224,7 +213,6 @@ namespace TaxDemo
                         object[] oA = new object[] { false }; //首项为是否选中
                         object[] oB = oA.Concat(newv.ToArray()).ToArray();
                         dgvSals.Rows.Add(oB.ToArray()); //加入数据表显示
-
                     }
                 }
 
@@ -245,6 +233,10 @@ namespace TaxDemo
 
         }
 
+        /// <summary>
+        /// 保存当前用户输入信息 CYQ 2018-07-12
+        /// </summary>
+        /// <param name="td">用户输入参数</param>
         private void SaveToFile(TmpData td)
         {
             try
@@ -291,8 +283,6 @@ namespace TaxDemo
             {
 
             }
-
-
         }
 
         /// <summary>
@@ -303,14 +293,18 @@ namespace TaxDemo
             lblInfo.Text = string.Format("共计{0}人，{1}条记录", Names.Count, dgvSals.Rows.Count);
         }
 
-
         /// <summary>
         /// 检查输入项
         /// </summary>
         /// <returns></returns>
         private bool checkInput()
         {
-            if (txtERate1.Text.Trim() == string.Empty || txtERate2.Text.Trim() == string.Empty || txtDir.Text.Trim() == string.Empty || txtYearAnnu.Text.Trim() == string.Empty || txtYearTitle1.Text.Trim() == string.Empty || txtYearTitle2.Text.Trim() == string.Empty)
+            if (txtERate1.Text.Trim() == string.Empty ||
+                txtERate2.Text.Trim() == string.Empty ||
+                txtDir.Text.Trim() == string.Empty ||
+                txtYearAnnu.Text.Trim() == string.Empty ||
+                txtYearTitle1.Text.Trim() == string.Empty ||
+                txtYearTitle2.Text.Trim() == string.Empty)
             {
                 return false;
             }
@@ -377,22 +371,19 @@ namespace TaxDemo
         /// <param name="e"></param>
         private void cbxAgentCs_SelectedIndexChanged(object sender, EventArgs e)
         {
-            lblCurrent.Text = "1" + ((AGENT_COUNTRY)cbxAgentCs.SelectedItem).AC_CURRENCY + "=";
+            AGENT_COUNTRY ac = (AGENT_COUNTRY)cbxAgentCs.SelectedItem; // 国别信息 Added by CYQ 2018-07-12
+            lblCurrent.Text = "1" + ac.AC_CURRENCY + "="; // 设置国别对应的货币
 
-            int tmpID = (int)db.AGENT_COUNTRies.SingleOrDefault(a => a.AC_ID == ((AGENT_COUNTRY)cbxAgentCs.SelectedItem).AC_ID).AC_TIID;
+            ACID = ac.AC_ID; // 国别ID Added by CYQ 2018-07-12
+            TIID = (int)db.AGENT_COUNTRies.SingleOrDefault(a => a.AC_ID == ac.AC_ID).AC_TIID; // 国别模板ID Modified by CYQ 2018-07-12
 
-            ACID = ((AGENT_COUNTRY)cbxAgentCs.SelectedItem).AC_ID;
-            TIID = tmpID;
-
-            TEMPLATE_INFO ti = db.TEMPLATE_INFOs.SingleOrDefault(a => a.TI_ID == tmpID);
-
+            TEMPLATE_INFO ti = db.TEMPLATE_INFOs.SingleOrDefault(a => a.TI_ID == TIID); // 获取国别对应的模板信息  Added by CYQ 2018-07-12
             if (ti == null)
             {
                 MessageBox.Show("此国别尚未设置导入模板", this.funName, MessageBoxButtons.OK);
                 return;
             }
-
-            BuildColumns(ti);
+            BuildColumns(ti); // 根据模板构建表格显示的列结构 Added by CYQ 2018-07-12
         }
 
         private void cbxAgents_SelectedIndexChanged(object sender, EventArgs e)
@@ -458,8 +449,8 @@ namespace TaxDemo
         /// <param name="e"></param>
         private void toolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            decimal internalTotal = 0;
-            decimal externalTotal = 0;
+            decimal internalTotal = 0; // 境内合计 Added by CYQ 2018-07-12
+            decimal externalTotal = 0; // 境外合计 Added by CYQ 2018-07-12
 
             try
             {
@@ -476,7 +467,6 @@ namespace TaxDemo
                 }
                 List<string> mons = months.OrderBy(a => a).ToList();
 
-
                 //修改每月建费用额
                 string x = string.Empty;
                 frmInput frm = new frmInput();
@@ -491,9 +481,8 @@ namespace TaxDemo
                 {
                     Dictionary<string, decimal> minusList = frm.minusList; //每月减费用额，计算税级时使用
 
-
                     TEMPLATE_INFO ti = db.TEMPLATE_INFOs.SingleOrDefault(a => a.TI_ID == this.TIID);
-                    string playerName = (string)dgvSals.SelectedRows[0].Cells[1].Value;
+                    string playerName = (string)dgvSals.SelectedRows[0].Cells[1].Value; // 个税申报人
 
                     using (frmReportNew fa = new frmReportNew())
                     {
@@ -501,12 +490,11 @@ namespace TaxDemo
                         Report2Wrapper rw2 = new Report2Wrapper(); //报表2数据
                         REPORT_INFO ri = new REPORT_INFO(); //报表数据
 
-
-                        rw1.ACNAME = ((AGENT_COUNTRY)cbxAgentCs.SelectedItem).AC_NAME; ;
-                        rw1.TPNAME = rw2.TPNAME = playerName;
+                        rw1.ACNAME = ((AGENT_COUNTRY)cbxAgentCs.SelectedItem).AC_NAME; // 国别名称 Added by CYQ 2018-07-12
+                        rw1.TPNAME = rw2.TPNAME = playerName; // 个税申报人姓名 Added by CYQ 2018-07-12
                         rw1.MINUS = 4800;
 
-                        ri.RI_ACID = this.ACID;
+                        ri.RI_ACID = this.ACID; // 国别ID Added by CYQ 2018-07-12
 
                         decimal bonus = getBonus();
                         if (bonus == -1)
@@ -520,46 +508,43 @@ namespace TaxDemo
                             {
                                 return;
                             }
-
                         }
 
                         //报表基础信息
-                        ri.RI_BONUS = bonus;
-                        ri.RI_DECLARETIME = dtDeclare.Value;
-                        ri.RI_TABLETIME = dtTableOn.Value;
-                        ri.RI_ERATE1 = Convert.ToDecimal(txtERate1.Text);
-                        ri.RI_ERATE2 = Convert.ToDecimal(txtERate2.Text);
-                        ri.RI_MOUNTHCOUNT = dgvSals.SelectedRows.Count;
+                        ri.RI_BONUS = bonus; // 年终奖金 
+                        ri.RI_DECLARETIME = dtDeclare.Value; // 报税时间 
+                        ri.RI_TABLETIME = dtTableOn.Value; // 填表时间 
+                        ri.RI_ERATE1 = Convert.ToDecimal(txtERate1.Text); // 汇率 1 
+                        ri.RI_ERATE2 = Convert.ToDecimal(txtERate2.Text); // 汇率 2
+                        ri.RI_MOUNTHCOUNT = dgvSals.SelectedRows.Count;   // 纳税月数  
 
-                        ri.RI_MONTH = mons[0] + "-" + mons[months.Count - 1];
-                        ri.RI_CREATETIME = dtTableOn.Value;
-                        ri.RI_UIID = SysUtil.CurrentUserID();
-                        ri.RI_YEARTITLE1 = txtYearTitle1.Text;
-                        ri.RI_YEARTITLE2 = txtYearTitle2.Text;
-                        ri.RI_AYNAME = AYNAME;
-                        ri.RI_YEARANNU = Convert.ToDecimal(txtYearAnnu.Text.Trim());
-                        ri.RI_CURRENTNAME = lblCurrent.Text.Substring(1, lblCurrent.Text.Length - 2);
+                        ri.RI_MONTH = mons[0] + "-" + mons[months.Count - 1]; // 月数说明 
+                        ri.RI_CREATETIME = dtTableOn.Value; // 生成时间 
+                        ri.RI_UIID = SysUtil.CurrentUserID(); // 操作用户 
+                        ri.RI_YEARTITLE1 = txtYearTitle1.Text; // 报表1年度说明 
+                        ri.RI_YEARTITLE2 = txtYearTitle2.Text; // 报表2年度说明 
+                        ri.RI_AYNAME = AYNAME; // 纳税年度
+                        ri.RI_YEARANNU = Convert.ToDecimal(txtYearAnnu.Text.Trim()); // 年金限额 
+                        ri.RI_CURRENTNAME = lblCurrent.Text.Substring(1, lblCurrent.Text.Length - 2); // 币种名称 
                         int tpid = 0;
                         if (SysUtil.GetPlayerID(ACID, playerName, ref tpid))
                         {
                             ri.RI_TPID = tpid;
                         }
 
-
-
                         for (int i = 0; i < dgvSals.SelectedRows.Count; i++)
                         {
                             //报表1数据
                             var td = new REPORT1_DETAIL
                             {
-                                R1_MONTH = dgvSals.SelectedRows[i].Cells[2].Value.ToString(),
-                                R1_FORTAX = Convert.ToDecimal(dgvSals.SelectedRows[i].Cells[3].Value.ToString()),
-                                R1_REALDOLLOR = Convert.ToDecimal(dgvSals.SelectedRows[i].Cells[4].Value.ToString()),
-                                R1_REALRMB = Convert.ToDecimal(dgvSals.SelectedRows[i].Cells[5].Value.ToString()),
-                                R1_TAXALREADY = Convert.ToDecimal(dgvSals.SelectedRows[i].Cells[6].Value.ToString()),
-                                R1_TAXALREADYRMB = Convert.ToDecimal(dgvSals.SelectedRows[i].Cells[7].Value.ToString()),
+                                R1_MONTH = dgvSals.SelectedRows[i].Cells[2].Value.ToString(), // 月份
+                                R1_FORTAX = Convert.ToDecimal(dgvSals.SelectedRows[i].Cells[3].Value.ToString()), // 应纳税工资
+                                R1_REALDOLLOR = Convert.ToDecimal(dgvSals.SelectedRows[i].Cells[4].Value.ToString()), // 实发工资(美元)
+                                R1_REALRMB = Convert.ToDecimal(dgvSals.SelectedRows[i].Cells[5].Value.ToString()), // 实发工资(RMB)
+                                R1_TAXALREADY = Convert.ToDecimal(dgvSals.SelectedRows[i].Cells[6].Value.ToString()), // 已纳税额
+                                R1_TAXALREADYRMB = Convert.ToDecimal(dgvSals.SelectedRows[i].Cells[7].Value.ToString()), // 已纳税额（RMB）
                             };
-                            td.R1_SALARYRMB = td.R1_FORTAX + td.R1_REALRMB + td.R1_TAXALREADYRMB;
+                            td.R1_SALARYRMB = td.R1_FORTAX + td.R1_REALRMB + td.R1_TAXALREADYRMB; // 应纳税工资合计
 
                             /* Modified by cyq 20160331 */
                             /************  Begin  *********/
@@ -576,17 +561,16 @@ namespace TaxDemo
                             //报表2数据
                             var td2 = new REPORT2_DETAIL();
                             td2.R2_MONTH = dgvSals.SelectedRows[i].Cells[2].Value.ToString();
-                            td2.R2_SALARY = td.R1_SALARYRMB;
-                            td2.R2_MINUS = minusList[td2.R2_MONTH];
-                            td2.R2_TAXSALARY = td2.R2_SALARY - td2.R2_MINUS;
+                            td2.R2_SALARY = td.R1_SALARYRMB; // 应纳税工资（报表2）
+                            td2.R2_MINUS = minusList[td2.R2_MONTH]; // 减费用额（报表2）
+                            td2.R2_TAXSALARY = td2.R2_SALARY - td2.R2_MINUS; // 应纳税所得额（报表2）
                             TAX_RATE ta = SysUtil.GetTaxRate(td2.R2_SALARY, minusList[td2.R2_MONTH]);
-                            td2.R2_TAXRATE = ta.TR_RATE;
-                            td2.R2_QUICK = ta.TR_QUICH;
-                            td2.R2_NEED = Convert.ToDecimal((td2.R2_TAXSALARY * td2.R2_TAXRATE / 100 - td2.R2_QUICK).ToString("F2"));
+                            td2.R2_TAXRATE = ta.TR_RATE; // 税率（报表2）
+                            td2.R2_QUICK = ta.TR_QUICH; // 速算扣除数（报表2）
+                            td2.R2_NEED = Convert.ToDecimal((td2.R2_TAXSALARY * td2.R2_TAXRATE / 100 - td2.R2_QUICK).ToString("F2")); // 应纳税额（报表2）
 
                             rw1.Details.Add(td);
                             rw2.Details.Add(td2);
-
                         }
 
                         /* Modified by cyq 20160331 */
@@ -597,15 +581,47 @@ namespace TaxDemo
 
                         decimal min = rw2.Details.Min(a => a.R2_TAXSALARY);
                         if (min > 0) min = 0;
+
+                        //*** Modified by CYQ on 2018-07-26 ***//
+                        // 根据财通佳鑫要求：
+                        // 1.当应纳税工资＜=0时 年终奖调整额根据min所在行减费用额，调减3500或4800。
+                        // 2.如果“应纳税所得额”值min不唯一，且“减费用额”列对应数值不唯一，则取值4800对年终奖进行调整。
+                        //*** Begin ***//
+                        else
+                        {
+                            if (min < -3500)
+                            {
+                                int minTSCnt = rw2.Details.Where(r => r.R2_TAXSALARY == min).Count(); // 应纳税所得额唯一值统计
+
+                                decimal[] r2_Minus = rw2.Details.Where(r => r.R2_TAXSALARY == min).Select(r => r.R2_MINUS).ToArray();
+                                if (minTSCnt > 1) // 存在重复的应纳税所得额
+                                {
+                                    if (r2_Minus.Distinct().Count() > 1)
+                                    {
+                                        min = -4800;
+                                    }
+                                    else
+                                    {
+                                        min = (-1) * r2_Minus[0];
+                                    } // end else
+                                }
+                                else // 无重复的应纳税所得额
+                                {
+                                    min = (-1) * r2_Minus[0];
+                                }
+                            }
+                        } // end else
+                        //*** End ***//
+
                         TAX_RATE trbonus = SysUtil.GetTaxRate((ri.RI_BONUS + min) / 12, 4800, true);
-                        ri.RI_BONUSTAXRATEID = trbonus.TR_ID;
-                        ri.RI_BONUSTAX = Convert.ToDecimal(((ri.RI_BONUS * trbonus.TR_RATE / 100) - trbonus.TR_QUICH).ToString("F2"));
-                        ri.RI_SUMS = rw2.Details.Sum(a => a.R2_SALARY) + ri.RI_BONUS;
-                        ri.RI_SUMTAXSALARY = rw2.Details.Sum(a => a.R2_TAXSALARY) + ri.RI_BONUS;
-                        ri.RI_SUMTAXRMB = rw2.Details.Sum(a => a.R2_NEED) + (decimal)ri.RI_BONUSTAX;
+                        ri.RI_BONUSTAXRATEID = trbonus.TR_ID; // 年终奖金税率
+                        ri.RI_BONUSTAX = Convert.ToDecimal(((ri.RI_BONUS * trbonus.TR_RATE / 100) - trbonus.TR_QUICH).ToString("F2")); // 应纳税额（年终奖）
+                        ri.RI_SUMS = rw2.Details.Sum(a => a.R2_SALARY) + ri.RI_BONUS; // 收入额（合计）
+                        ri.RI_SUMTAXSALARY = rw2.Details.Sum(a => a.R2_TAXSALARY) + ri.RI_BONUS; // 应纳税所得额（合计）
+                        ri.RI_SUMTAXRMB = rw2.Details.Sum(a => a.R2_NEED) + (decimal)ri.RI_BONUSTAX; // 应纳税额（合计）
                         ri.RI_SUMTAXALREADY = TaxAlready[playerName];
-                        ri.RI_SUMTAXALREADYRMB = Convert.ToDecimal((TaxAlready[playerName] * ri.RI_ERATE1 * ri.RI_ERATE2).ToString("F2")); // rw1.Details.Sum(a => a.R1_TAXALREADYRMB);
-                        ri.RI_NEEDPACK = (decimal)ri.RI_SUMTAXRMB - (decimal)ri.RI_SUMTAXALREADYRMB;
+                        ri.RI_SUMTAXALREADYRMB = Convert.ToDecimal((TaxAlready[playerName] * ri.RI_ERATE1 * ri.RI_ERATE2).ToString("F2")); // rw1.Details.Sum(a => a.R1_TAXALREADYRMB); // 境外已纳税额
+                        ri.RI_NEEDPACK = (decimal)ri.RI_SUMTAXRMB - (decimal)ri.RI_SUMTAXALREADYRMB; // 境内应补税额【计算公式：应纳税额（合计） - 境外已纳税额】
                         ri.RI_USEALL = 0;
                         ri.RI_USE2 = 0;
 
@@ -637,9 +653,7 @@ namespace TaxDemo
 
                             fa.AddedTC = tc;
                         }
-
                         /* ***********  End  *********/
-
 
                         if (ri.RI_NEEDPACK < 0)
                         {
@@ -647,12 +661,12 @@ namespace TaxDemo
                         }
                         else
                         {
-                            ri.RI_NEEDPACKREAL = ri.RI_NEEDPACK;
+                            ri.RI_NEEDPACKREAL = ri.RI_NEEDPACK; // 境内实需补税额 
                         }
-                        ri.RI_NOTE1 = string.Format("注：1. {0}{1}{2}元人民币", dtDeclare.Value.ToString("yyyy年MM月dd日"), lblCurrent.Text, (ri.RI_ERATE1 * ri.RI_ERATE2).ToString("f6"));
-                        ri.RI_NOTE2 = string.Format("2. {0}年{1}已纳税额 {2} {3},折合人民币 {4} 元", txtYear.Text, rw1.ACNAME, ri.RI_SUMTAXALREADY.ToString("N2"), ((AGENT_COUNTRY)cbxAgentCs.SelectedItem).AC_CURRENCY, ((decimal)ri.RI_SUMTAXALREADYRMB).ToString("N2"));
+                        ri.RI_NOTE1 = string.Format("注：1. {0}{1}{2}元人民币", dtDeclare.Value.ToString("yyyy年MM月dd日"), lblCurrent.Text, (ri.RI_ERATE1 * ri.RI_ERATE2).ToString("f6")); // 备注1 
+                        ri.RI_NOTE2 = string.Format("2. {0}年{1}已纳税额 {2} {3},折合人民币 {4} 元", txtYear.Text, rw1.ACNAME, ri.RI_SUMTAXALREADY.ToString("N2"), ((AGENT_COUNTRY)cbxAgentCs.SelectedItem).AC_CURRENCY, ((decimal)ri.RI_SUMTAXALREADYRMB).ToString("N2")); // 备注2
 
-                        ri.RI_USEALL = 0;
+                        ri.RI_USEALL = 0; // 使用可抵税总额 
 
                         rw1.Base = rw2.Base = ri;
                         fa.RW1 = rw1;
@@ -663,7 +677,6 @@ namespace TaxDemo
                         {
 
                         }
-
                     }
                 }
                 catch (Exception ex)
@@ -990,12 +1003,7 @@ namespace TaxDemo
 
                 ColumnsDAL cd = new ColumnsDAL();
 
-                /* Modified by cyq 20160331 */
-                /************  Begin  *********/
-                //cd.OpenConnection(System.Configuration.ConfigurationManager.ConnectionStrings["TaxDemo.Properties.Settings.testdbConnectionString"].ConnectionString);
-                cd.OpenConnection(db.Connection.ConnectionString);
-                /* ***********  End  *********/
-                
+                cd.OpenConnection(System.Configuration.ConfigurationManager.ConnectionStrings["TaxDemo.Properties.Settings.testdbConnectionString"].ConnectionString);
                 cd.WriteRawData(value, cols);
                 cd.CloseConnection();
 

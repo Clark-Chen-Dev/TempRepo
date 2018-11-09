@@ -30,6 +30,7 @@
         {
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage1 = new System.Windows.Forms.TabPage();
+            this.ucReport11 = new TaxDemo.ucReport1();
             this.tabPage2 = new System.Windows.Forms.TabPage();
             this.btnCanUse2 = new System.Windows.Forms.Button();
             this.txtCanUse2 = new System.Windows.Forms.TextBox();
@@ -38,7 +39,9 @@
             this.btnTaxCredit = new System.Windows.Forms.Button();
             this.txtCanUse = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
+            this.ucReport21 = new TaxDemo.ucReport2();
             this.tabPage3 = new System.Windows.Forms.TabPage();
+            this.ucReport31 = new TaxDemo.ucReport3();
             this.lblReviewer = new System.Windows.Forms.Label();
             this.lblScheduler = new System.Windows.Forms.Label();
             this.txtReviewer = new System.Windows.Forms.TextBox();
@@ -49,9 +52,6 @@
             this.btnOK = new System.Windows.Forms.Button();
             this.btnEm = new System.Windows.Forms.Button();
             this.fbdPath = new System.Windows.Forms.FolderBrowserDialog();
-            this.ucReport11 = new TaxDemo.ucReport1();
-            this.ucReport21 = new TaxDemo.ucReport2();
-            this.ucReport31 = new TaxDemo.ucReport3();
             this.tabControl1.SuspendLayout();
             this.tabPage1.SuspendLayout();
             this.tabPage2.SuspendLayout();
@@ -66,7 +66,7 @@
             this.tabControl1.Location = new System.Drawing.Point(12, 12);
             this.tabControl1.Name = "tabControl1";
             this.tabControl1.SelectedIndex = 0;
-            this.tabControl1.Size = new System.Drawing.Size(1148, 599);
+            this.tabControl1.Size = new System.Drawing.Size(1248, 599);
             this.tabControl1.TabIndex = 0;
             // 
             // tabPage1
@@ -75,10 +75,17 @@
             this.tabPage1.Location = new System.Drawing.Point(4, 22);
             this.tabPage1.Name = "tabPage1";
             this.tabPage1.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage1.Size = new System.Drawing.Size(1140, 573);
+            this.tabPage1.Size = new System.Drawing.Size(1240, 573);
             this.tabPage1.TabIndex = 0;
             this.tabPage1.Text = "报表一";
             this.tabPage1.UseVisualStyleBackColor = true;
+            // 
+            // ucReport11
+            // 
+            this.ucReport11.Location = new System.Drawing.Point(54, 48);
+            this.ucReport11.Name = "ucReport11";
+            this.ucReport11.Size = new System.Drawing.Size(982, 505);
+            this.ucReport11.TabIndex = 0;
             // 
             // tabPage2
             // 
@@ -93,14 +100,14 @@
             this.tabPage2.Location = new System.Drawing.Point(4, 22);
             this.tabPage2.Name = "tabPage2";
             this.tabPage2.Padding = new System.Windows.Forms.Padding(3);
-            this.tabPage2.Size = new System.Drawing.Size(1140, 573);
+            this.tabPage2.Size = new System.Drawing.Size(1240, 573);
             this.tabPage2.TabIndex = 1;
             this.tabPage2.Text = "报表二";
             this.tabPage2.UseVisualStyleBackColor = true;
             // 
             // btnCanUse2
             // 
-            this.btnCanUse2.Location = new System.Drawing.Point(768, 18);
+            this.btnCanUse2.Location = new System.Drawing.Point(286, 16);
             this.btnCanUse2.Name = "btnCanUse2";
             this.btnCanUse2.Size = new System.Drawing.Size(75, 23);
             this.btnCanUse2.TabIndex = 7;
@@ -110,7 +117,7 @@
             // 
             // txtCanUse2
             // 
-            this.txtCanUse2.Location = new System.Drawing.Point(667, 18);
+            this.txtCanUse2.Location = new System.Drawing.Point(185, 17);
             this.txtCanUse2.Name = "txtCanUse2";
             this.txtCanUse2.Size = new System.Drawing.Size(84, 21);
             this.txtCanUse2.TabIndex = 6;
@@ -118,7 +125,7 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(549, 22);
+            this.label2.Location = new System.Drawing.Point(67, 21);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(101, 12);
             this.label2.TabIndex = 5;
@@ -126,7 +133,7 @@
             // 
             // btnAdd
             // 
-            this.btnAdd.Location = new System.Drawing.Point(291, 16);
+            this.btnAdd.Location = new System.Drawing.Point(705, 16);
             this.btnAdd.Name = "btnAdd";
             this.btnAdd.Size = new System.Drawing.Size(75, 23);
             this.btnAdd.TabIndex = 4;
@@ -136,7 +143,7 @@
             // 
             // btnTaxCredit
             // 
-            this.btnTaxCredit.Location = new System.Drawing.Point(380, 16);
+            this.btnTaxCredit.Location = new System.Drawing.Point(794, 16);
             this.btnTaxCredit.Name = "btnTaxCredit";
             this.btnTaxCredit.Size = new System.Drawing.Size(145, 23);
             this.btnTaxCredit.TabIndex = 3;
@@ -146,7 +153,7 @@
             // 
             // txtCanUse
             // 
-            this.txtCanUse.Location = new System.Drawing.Point(203, 18);
+            this.txtCanUse.Location = new System.Drawing.Point(617, 17);
             this.txtCanUse.Name = "txtCanUse";
             this.txtCanUse.Size = new System.Drawing.Size(76, 21);
             this.txtCanUse.TabIndex = 2;
@@ -154,21 +161,45 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(54, 22);
+            this.label1.Location = new System.Drawing.Point(468, 21);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(143, 12);
             this.label1.TabIndex = 1;
             this.label1.Text = "输入过往5年可用已纳税额";
+            // 
+            // ucReport21
+            // 
+            this.ucReport21.Location = new System.Drawing.Point(16, 55);
+            this.ucReport21.Name = "ucReport21";
+            this.ucReport21.Size = new System.Drawing.Size(1213, 512);
+            this.ucReport21.TabIndex = 0;
             // 
             // tabPage3
             // 
             this.tabPage3.Controls.Add(this.ucReport31);
             this.tabPage3.Location = new System.Drawing.Point(4, 22);
             this.tabPage3.Name = "tabPage3";
-            this.tabPage3.Size = new System.Drawing.Size(1140, 573);
+            this.tabPage3.Size = new System.Drawing.Size(1240, 573);
             this.tabPage3.TabIndex = 2;
             this.tabPage3.Text = "报表三";
             this.tabPage3.UseVisualStyleBackColor = true;
+            // 
+            // ucReport31
+            // 
+            this.ucReport31.ExternalTotal = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.ucReport31.InternalTotal = new decimal(new int[] {
+            0,
+            0,
+            0,
+            0});
+            this.ucReport31.Location = new System.Drawing.Point(94, 34);
+            this.ucReport31.Name = "ucReport31";
+            this.ucReport31.Size = new System.Drawing.Size(758, 426);
+            this.ucReport31.TabIndex = 0;
             // 
             // lblReviewer
             // 
@@ -255,42 +286,11 @@
             this.btnEm.UseVisualStyleBackColor = true;
             this.btnEm.Click += new System.EventHandler(this.btnEm_Click);
             // 
-            // ucReport11
-            // 
-            this.ucReport11.Location = new System.Drawing.Point(54, 48);
-            this.ucReport11.Name = "ucReport11";
-            this.ucReport11.Size = new System.Drawing.Size(982, 505);
-            this.ucReport11.TabIndex = 0;
-            // 
-            // ucReport21
-            // 
-            this.ucReport21.Location = new System.Drawing.Point(16, 55);
-            this.ucReport21.Name = "ucReport21";
-            this.ucReport21.Size = new System.Drawing.Size(1113, 512);
-            this.ucReport21.TabIndex = 0;
-            // 
-            // ucReport31
-            // 
-            this.ucReport31.ExternalTotal = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.ucReport31.InternalTotal = new decimal(new int[] {
-            0,
-            0,
-            0,
-            0});
-            this.ucReport31.Location = new System.Drawing.Point(94, 34);
-            this.ucReport31.Name = "ucReport31";
-            this.ucReport31.Size = new System.Drawing.Size(758, 426);
-            this.ucReport31.TabIndex = 0;
-            // 
             // frmReportNew
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1157, 670);
+            this.ClientSize = new System.Drawing.Size(1257, 670);
             this.Controls.Add(this.lblReviewer);
             this.Controls.Add(this.btnPrint);
             this.Controls.Add(this.lblScheduler);
@@ -303,6 +303,7 @@
             this.Controls.Add(this.tabControl1);
             this.Name = "frmReportNew";
             this.Text = "报表详细";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmReportNew_FormClosing);
             this.Load += new System.EventHandler(this.frmReportNew_Load);
             this.tabControl1.ResumeLayout(false);
             this.tabPage1.ResumeLayout(false);

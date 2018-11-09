@@ -44,7 +44,7 @@ namespace TaxDemo
 
         private void ucReport3_Load(object sender, EventArgs e)
         {
-           
+
         }
 
         /// <summary>
@@ -55,11 +55,15 @@ namespace TaxDemo
             if (RI != null)
             {
                 //txtInfo.Text = txtData.Text = string.Empty;
-                if (RI.RI_MOUNTHCOUNT == 12 && RI.RI_SUMS >= 120000)
+                //*** Modified by CYQ on 2018-07-26 ***//
+                // 根据财通嘉鑫要求，去除“年所得超过12万元”才能导出报表3的限制
+                //*** Begin ***//
+                //if (RI.RI_MOUNTHCOUNT == 12 && RI.RI_SUMS >= 120000)
+                if (RI.RI_MOUNTHCOUNT == 12)
+                //*** End ***//
                 {
                     c1FlexGrid3.Rows.Add();
                     int index = c1FlexGrid3.Rows.Count - 1;
-
 
                     /* Modified by cyq 20160331 */
                     /************  Begin  *********/
@@ -73,7 +77,7 @@ namespace TaxDemo
                     c1FlexGrid3[index, 2] = RI.RI_SUMS.ToString("F2");
                     c1FlexGrid3[index, 3] = RI.RI_SUMTAXSALARY.ToString("F2");
                     c1FlexGrid3[index, 4] = RI.RI_SUMTAXRMB;
-                    c1FlexGrid3[index, 5] = RI.RI_NEEDPACKREAL>0?RI.RI_NEEDPACKREAL:0;
+                    c1FlexGrid3[index, 5] = RI.RI_NEEDPACKREAL > 0 ? RI.RI_NEEDPACKREAL : 0;
                     if (RI.RI_SUMTAXRMB < (RI.RI_SUMTAXALREADYRMB + RI.RI_USEALL))
                     {
                         c1FlexGrid3[index, 6] = RI.RI_SUMTAXRMB;
@@ -82,14 +86,14 @@ namespace TaxDemo
                     {
                         c1FlexGrid3[index, 6] = RI.RI_SUMTAXALREADYRMB + RI.RI_USEALL;
                     }
-                    
+
                 }
                 else
                 {
                     lblMsg.Visible = true;
                 }
 
-                
+
 
             }
         }
@@ -99,7 +103,7 @@ namespace TaxDemo
         /// </summary>
         /// <param name="use"></param>
         /// <param name="real"></param>
-        internal void AddCanUse(decimal use,decimal real)
+        internal void AddCanUse(decimal use, decimal real)
         {
             c1FlexGrid3[1, 5] = real;
             c1FlexGrid3[1, 6] = use;

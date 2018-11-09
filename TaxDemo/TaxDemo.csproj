@@ -479,8 +479,8 @@
     <None Include="app.config">
       <SubType>Designer</SubType>
     </None>
-    <EmbeddedResource Include="Resources\ReportTemplate.xlsx" />
     <None Include="Properties\app.manifest" />
+    <EmbeddedResource Include="Resources\ReportTemplate.xlsx" />
     <None Include="Resources\T1.xls" />
     <None Include="Resources\T2.xls" />
     <None Include="Resources\T3.xls" />

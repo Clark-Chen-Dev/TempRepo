@@ -165,11 +165,7 @@ namespace TaxDemo
 
             ColumnsDAL cd = new ColumnsDAL();
 
-            /* Modified by cyq 20160331 */
-            /************  Begin  *********/
-            //cd.OpenConnection(System.Configuration.ConfigurationManager.ConnectionStrings["TaxDemo.Properties.Settings.testdbConnectionString"].ConnectionString);
-            cd.OpenConnection(db.Connection.ConnectionString);
-            /* ***********  End  *********/
+            cd.OpenConnection(System.Configuration.ConfigurationManager.ConnectionStrings["TaxDemo.Properties.Settings.testdbConnectionString"].ConnectionString);
             
             cd.InsertCol(ci);
             cd.CloseConnection();
